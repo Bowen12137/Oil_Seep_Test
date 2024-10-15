@@ -85,9 +85,9 @@ Due to the class imbalance in the dataset (many more non-seep pixels than seep p
 
    The Cross Entropy loss is the standard loss function for classification tasks. It works by comparing the predicted probability distribution with the ground truth.
 
-   
+   $$
    \text{CE}(p, \hat{p}) = - \left[ p \cdot \log(\hat{p}) + (1 - p) \cdot \log(1 - \hat{p}) \right]
-   
+   $$
 
    - **Comments**: Works well for balanced datasets but may lead to biased predictions in cases of class imbalance.
 
@@ -95,9 +95,9 @@ Due to the class imbalance in the dataset (many more non-seep pixels than seep p
 
    The Dice Loss measures the overlap between the predicted segmentation and the ground truth, similar to the F1 score. It's more effective for tasks with imbalanced classes.
 
-   
+   $$
    \text{Dice Loss} = 1 - \frac{2 \cdot |P \cap G|}{|P| + |G|}
-   
+   $$
 
    where \( P \) is the predicted segmentation, and \( G \) is the ground truth.
 
@@ -107,9 +107,9 @@ Due to the class imbalance in the dataset (many more non-seep pixels than seep p
 
    IoU loss is used for segmentation tasks and measures the overlap between the predicted segmentation and the ground truth. It penalizes the model based on the area of overlap.
 
-   
+   $$
    \text{IoU Loss} = 1 - \frac{|P \cap G|}{|P \cup G|}
-   
+   $$
 
    - **Comments**: IoU Loss is particularly effective at penalizing regions where there is a mismatch between the prediction and the ground truth, especially in boundary regions.
 
@@ -117,16 +117,17 @@ Due to the class imbalance in the dataset (many more non-seep pixels than seep p
 
    The Tversky Loss is a generalization of the Dice Loss that allows for more flexible handling of false positives and false negatives by adjusting the balance between them. It is particularly useful for highly imbalanced datasets.
 
-   
+   $$
    \text{Tversky Index (TI)} = \frac{|P \cap G|}{|P \cap G| + \alpha \cdot |P \setminus G| + \beta \cdot |G \setminus P|}
-   
+   $$
 
-   
+   $$
    \text{Tversky Loss} = 1 - \text{TI}
-   
+   $$
 
    - **Comments**: Adjusting the parameters \( \alpha \) and \( \beta \) allows us to control the relative importance of false positives and false negatives. This flexibility makes it particularly useful for imbalanced datasets where one type of error (e.g., false negatives) is more critical than the other.
 
+---
 
 ## Metrics Used
 
@@ -193,8 +194,7 @@ $$
 
 - **Purpose**: While accuracy is useful, it can be misleading in cases of class imbalance. It’s best used in combination with the other metrics.
 
-
-
+---
 ## Training
 
 ### Hyperparameters:
